@@ -19,7 +19,7 @@ $(BIN)/keyboard.o : keyboard.cpp keyboard.h
 	g++ -o $@ $(CFLAGS) -c keyboard.cpp $(INC)
 
 clean :
+	rm $(BIN)/view.a
 	rm $(BIN)/gui.o
 	rm $(BIN)/guiboard.o
-
-
+	rm $(BIN)/keyboard.o
