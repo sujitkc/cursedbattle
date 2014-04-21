@@ -10,8 +10,8 @@ Installation
 2. Download the following directory into BATTLEHOME.
  - src/
 3. Create a directory 'bin' in BATTLEHOME.
-3. cd src
-4. make
+4. cd src
+5. make
 
 Use
 ---
