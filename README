@@ -6,7 +6,7 @@ System Requirements
 
 Installation
 ------------
-1. Create a directory named 'battleship' at some appropriate location on your computer. Let's called this directory as BATTLEHOME.
+1. Create a directory named 'battleship' at some appropriate location on your computer. Let's call this directory BATTLEHOME.
 2. Download the following directory into BATTLEHOME.
  - src/
 3. Create a directory 'bin' in BATTLEHOME.
