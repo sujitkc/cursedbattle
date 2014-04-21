@@ -25,5 +25,7 @@ modelexceptions.h : $(UTIL)/exception.h
 	touch modelexceptions.h
 
 clean:
+	rm $(BIN)/model.a
 	rm $(BIN)/vessel.o
 	rm $(BIN)/board.o
+	rm $(BIN)/modelexceptions.o
