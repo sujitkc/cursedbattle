@@ -1,0 +1,100 @@
+Player placing Aircraft Carrier at ((2, 2), E).
+Player placing Destroyer at ((2, 5), E).
+Player placing Cruiser at ((1, 7), S).
+Player placing Submarine at ((5, 7), E).
+Player placing Patrol at ((0, 0), E).
+CPU placing Aircraft Carrier at ((4, 9), W).
+CPU placing Destroyer at ((9, 3), N).
+CPU placing Cruiser at ((0, 5), N).
+CPU placing Submarine at ((5, 5), N).
+CPU placing Patrol at ((3, 6), W).
+Player attacked at (2, 1); result : MISS.
+CPU attacked at (8, 4); result : MISS.
+Player attacked at (2, 4); result : MISS.
+CPU attacked at (4, 1); result : MISS.
+Player attacked at (5, 5); result : HIT.
+CPU attacked at (4, 0); result : MISS.
+Player attacked at (5, 6); result : MISS.
+CPU attacked at (8, 0); result : MISS.
+Player attacked at (4, 5); result : MISS.
+CPU attacked at (3, 6); result : MISS.
+Player attacked at (6, 5); result : MISS.
+CPU attacked at (6, 4); result : MISS.
+Player attacked at (5, 4); result : HIT.
+CPU attacked at (4, 2); result : HIT.
+Player attacked at (5, 3); result : SANK Submarine
+CPU attacked at (2, 0); result : MISS.
+Player attacked at (5, 8); result : MISS.
+CPU attacked at (6, 3); result : MISS.
+Player attacked at (3, 8); result : MISS.
+CPU attacked at (3, 5); result : HIT.
+Player attacked at (1, 8); result : MISS.
+CPU attacked at (6, 2); result : HIT.
+Player attacked at (1, 6); result : MISS.
+CPU attacked at (8, 3); result : MISS.
+Player attacked at (3, 6); result : HIT.
+CPU attacked at (2, 5); result : HIT.
+Player attacked at (3, 5); result : MISS.
+CPU attacked at (0, 7); result : MISS.
+Player attacked at (2, 6); result : SANK Patrol
+CPU attacked at (8, 6); result : MISS.
+Player attacked at (7, 2); result : MISS.
+CPU attacked at (0, 6); result : MISS.
+Player attacked at (9, 2); result : HIT.
+CPU attacked at (0, 4); result : MISS.
+Player attacked at (9, 3); result : HIT.
+CPU attacked at (9, 5); result : MISS.
+Player attacked at (9, 1); result : HIT.
+CPU attacked at (6, 7); result : HIT.
+Player attacked at (9, 0); result : SANK Destroyer
+CPU attacked at (7, 9); result : MISS.
+Player attacked at (8, 6); result : MISS.
+CPU attacked at (5, 5); result : HIT.
+Player attacked at (6, 7); result : MISS.
+CPU attacked at (5, 9); result : MISS.
+Player attacked at (8, 8); result : MISS.
+CPU attacked at (1, 5); result : MISS.
+Player attacked at (7, 9); result : MISS.
+CPU attacked at (1, 1); result : MISS.
+Player attacked at (5, 9); result : MISS.
+CPU attacked at (9, 1); result : MISS.
+Player attacked at (3, 9); result : HIT.
+CPU attacked at (4, 3); result : MISS.
+Player attacked at (2, 9); result : HIT.
+CPU attacked at (6, 5); result : MISS.
+Player attacked at (1, 9); result : HIT.
+CPU attacked at (0, 5); result : MISS.
+Player attacked at (0, 9); result : HIT.
+CPU attacked at (3, 2); result : HIT.
+Player attacked at (4, 9); result : SANK Aircraft Carrier
+CPU attacked at (1, 6); result : MISS.
+Player attacked at (3, 2); result : MISS.
+CPU attacked at (0, 0); result : HIT.
+Player attacked at (1, 2); result : MISS.
+CPU attacked at (5, 8); result : MISS.
+Player attacked at (1, 0); result : MISS.
+CPU attacked at (5, 3); result : MISS.
+Player attacked at (4, 0); result : MISS.
+CPU attacked at (9, 0); result : MISS.
+Player attacked at (4, 2); result : MISS.
+CPU attacked at (5, 2); result : HIT.
+Player attacked at (5, 1); result : MISS.
+CPU attacked at (3, 3); result : MISS.
+Player attacked at (8, 1); result : MISS.
+CPU attacked at (1, 8); result : HIT.
+Player attacked at (8, 3); result : MISS.
+CPU attacked at (4, 6); result : MISS.
+Player attacked at (7, 4); result : MISS.
+CPU attacked at (7, 3); result : MISS.
+Player attacked at (7, 0); result : MISS.
+CPU attacked at (8, 1); result : MISS.
+Player attacked at (2, 3); result : MISS.
+CPU attacked at (7, 0); result : MISS.
+Player attacked at (0, 3); result : HIT.
+CPU attacked at (0, 8); result : MISS.
+Player attacked at (0, 4); result : HIT.
+CPU attacked at (5, 1); result : MISS.
+Player attacked at (0, 2); result : MISS.
+CPU attacked at (0, 1); result : MISS.
+Player attacked at (0, 5); result : SANK Cruiser
+Game over: Player wins! Press a key to continue.
