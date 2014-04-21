@@ -1,1 +1,24 @@
-Hello, World!
+System Requirements
+-------------------
+ - Some Unix flavour: Linux, MacOS, cygwin
+ - g++
+ - libcurses
+
+Installation
+------------
+1. Create a directory named 'battleship' at some appropriate location on your computer. Let's called this directory as BATTLEHOME.
+2. Download the following two directories into BATTLEHOME.
+ - src/
+ - bin/
+
+3. cd src
+4. make
+
+
+Use
+---
+Start at BATTLEHOME.
+1. cd bin
+2. ./battleship
+
+It should work!
