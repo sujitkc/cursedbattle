@@ -7,13 +7,11 @@ System Requirements
 Installation
 ------------
 1. Create a directory named 'battleship' at some appropriate location on your computer. Let's called this directory as BATTLEHOME.
-2. Download the following two directories into BATTLEHOME.
+2. Download the following directory into BATTLEHOME.
  - src/
- - bin/
-
+3. Create a directory 'bin' in BATTLEHOME.
 3. cd src
 4. make
-
 
 Use
 ---
