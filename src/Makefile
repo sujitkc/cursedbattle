@@ -7,6 +7,9 @@ INC        = -I$(MODEL) -I$(VIEW) -I$(CONTROLLER) -I$(UTIL)
 CPPFLAGS=-g -fpermissive
 
 all :
+	if [ ! -d "$(BIN)" ]; then \
+		mkdir "$(BIN)";    \
+	fi;                        
 	make -C $(MODEL)
 	make -C $(VIEW)
 	make -C $(CONTROLLER)
