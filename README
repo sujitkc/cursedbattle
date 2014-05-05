@@ -13,6 +13,21 @@ Installation
 4. cd src
 5. make
 
+Installation of NCurses
+-----------------------
+The application depends on the GNU NCurses library. In case your distribution doesn't have it already, you could install it using either of the following two ways:
+  1. Build from Source
+  --------------------
+  - Visit the following: http://ftp.gnu.org/pub/gnu/ncurses/
+    and download the latest stable version of NCurses. (I downloaded ncurses-5.9 which is the latest as on this date.)
+  - Follow the instructions in the package to build and install the library.
+
+  2. Prebuilt binary
+  ------------------
+  - Assuming that you are on a Ubuntu/Debian Linux running on a 64-bit system, the following command should get you the desired binary:
+  sudo apt-get install lib64ncurses5.
+  - For other types of systems, please refer to relevant documentation.
+
 Use
 ---
 Start at BATTLEHOME.
