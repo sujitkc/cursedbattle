@@ -50,8 +50,8 @@ public:
   Coordinates nextAvailableCellToEast(Vessel*);
   Coordinates nextAvailableCellToSouth(Vessel*);
   Coordinates nextAvailableCellToWest(Vessel*);
+  bool isWithinBoard(Coordinates);
 private:
   bool allSunk();
-  bool isWithinBoard(Coordinates);
 };
 #endif

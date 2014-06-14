@@ -171,7 +171,7 @@ void SmartCPU::cellNotHit(vector<Segment>& segments, Position pos) {
   Position nextPos = getNextPosition(pos);
   if(isHitNotSunk(nextPos.getCoordinates())) { // going to enter a new hit-segment
     segments.push_back(Segment(nextPos, 0)); //state a new hit-segment
-    cellHit(segments, nextPos);
+    cellHit(segments, nextPos); // transition to cellHit state.
   }
   else {
     cellNotHit(segments, nextPos);
@@ -187,7 +187,7 @@ void SmartCPU::cellHit(vector<Segment>& segments, Position pos) {
   Coordinates nextCell = pos.getCoordinates();
   Position nextPos = getNextPosition(pos);
   if(isHitNotSunk(nextPos.getCoordinates())) {  // continuing in the current hit-segment.
-    cellHit(segments, nextPos);
+    cellHit(segments, nextPos); // continue in the cellHit state
   }
   else {
     cellNotHit(segments, nextPos);  // exit the hit-segment

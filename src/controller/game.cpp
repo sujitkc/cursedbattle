@@ -2,10 +2,12 @@
 #include <string>
 #include <fstream>
 
-#include "user.h"
-#include "board.h"
-#include "vessel.h"
+#include "cpu.h"
+#include "smartcpu.h"
+#include "basiccpu.h"
+#include "player.h"
 #include "gui.h"
+#include "listpanel.h"
 #include "game.h"
 
 using namespace std;
@@ -19,9 +21,16 @@ Game::Game() {
   playerGUIBoard = new GUIBoard(string("Player"), gui, c1);
   cpuGUIBoard    = new GUIBoard(string("Machine"), gui, c2)   ;
   player         = new Player(playerBoard, playerGUIBoard, cpuBoard, cpuGUIBoard);
-  cpu            = new CPU(cpuBoard, cpuGUIBoard, playerBoard, playerGUIBoard)   ;
+  Level level    = Game::selectLevel();
+  if(level == BASIC) {
+    cpu          = new BasicCPU(cpuBoard, cpuGUIBoard, playerBoard, playerGUIBoard)   ;
+  }
+  else {
+    cpu          = new SmartCPU(cpuBoard, cpuGUIBoard, playerBoard, playerGUIBoard)   ;
+  }
   playerGUIBoard->draw();
   cpuGUIBoard->draw();
+  gui->printInstructions();
 }
 
 Game::~Game() {
@@ -34,6 +43,41 @@ Game::~Game() {
   GUIBoard* cpuGUIBoard;
 }
 
+Game::Level Game::selectLevel() {
+  GUI::getInstance()->clear();
+  GUI::getInstance()->showCursor(false);
+  vector<string> levels;
+  levels.push_back("BASIC    - work hard to lose");
+  levels.push_back("ADVANCED - work hard to win");
+  ListPanel listPanel("Select Level", GUI::getInstance(), Coordinates(40, 20), levels);
+  listPanel.draw();
+  while(true) {
+    int inp = (GUI::getInstance())->getKeyboard()->getKey();
+    const unsigned int selectedIndex = listPanel.getSelectedIndex();
+    switch(inp) {
+    case '\n':  // for ENTER
+    case 'q':
+      GUI::getInstance()->clear();
+      switch(selectedIndex) {
+      case 0:
+        return BASIC;
+      case 1:
+      default:
+        return ADVANCED;
+      }
+      break;
+    case KEY_UP:
+      listPanel.selectPreviousIndex();
+      break;
+    case KEY_DOWN:
+      listPanel.selectNextIndex();
+      break;
+    default:
+      break; 
+    }
+  }
+}
+
 // Run the game.
 // - Both players place their vessels.
 // - Get into the loop where each user takes its turn beginning with the player.
@@ -41,21 +85,26 @@ Game::~Game() {
 void Game::run() {
   player->placeAllVessels();
   cpu->placeAllVessels();
-
+  string winner = "";
   while(true) {
-    AttackResult result = player->takeTurn();
-    if(result.getState() == AttackResult::ALLSUNK) {
-      (GUI::getInstance())->logEvent("Game over: " + player->getName() + " wins! Press a key to continue.");
-      int inp = (GUI::getInstance())->getKeyboard()->getKey();
-      break;
+    try {
+      AttackResult result = player->takeTurn();
+      if(result.getState() == AttackResult::ALLSUNK) {
+        winner = player->getName();
+        break;
+      }
+      result = cpu->takeTurn();
+      if(result.getState() == AttackResult::ALLSUNK) {
+        winner = cpu->getName();
+        break;
+      }
     }
-    result = cpu->takeTurn();
-    if(result.getState() == AttackResult::ALLSUNK) {
-      (GUI::getInstance())->logEvent("Game over: " + cpu->getName() + " wins! Press a key to continue.");
-      int inp = (GUI::getInstance())->getKeyboard()->getKey();
-      break;
+    catch(ActionNotAllowedException e) {
     }
   }
+  (GUI::getInstance())->clear();
+  (GUI::getInstance())->logEvent("Game over: " + winner + " wins! Press a key to continue.");
+  int inp = (GUI::getInstance())->getKeyboard()->getKey();
   GUI::getInstance()->showCursor(true);
   saveLog();
   GUI::getInstance()->shutdown();

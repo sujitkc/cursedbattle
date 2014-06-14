@@ -7,7 +7,6 @@
 #include "vessel.h"
 #include "board.h"
 #include "guiboard.h"
-#include "gui.h"
 
 using namespace std;
 
@@ -38,25 +37,5 @@ public: // methods
   virtual Coordinates getAttackCoordinates() = 0;
   void placeAllVessels();
   AttackResult takeTurn();
-};
-
-class CPU : public User {
-private: // attributes
-  vector<Coordinates> attackedCoordinates;
-private: // methods
-  Position getPlacementPosition(Vessel *);
-  
-public: // methods
-  CPU(Board*, GUIBoard*, Board*, GUIBoard*);
-  virtual Coordinates getAttackCoordinates();
-};
-
-class Player : public User {
-private: // methods
-  Position getPlacementPosition(Vessel *);
-
-public: // methods
-  Player(Board*, GUIBoard*, Board*, GUIBoard*);
-  virtual Coordinates getAttackCoordinates();
 };
 #endif

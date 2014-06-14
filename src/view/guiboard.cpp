@@ -1,25 +1,13 @@
 #include <curses.h>
 #include <string>
+#include <stdlib.h>
 
 #include "board.h"
 #include "guiboard.h"
 
 using namespace std;
-Coordinates GUIBoard::size = (Coordinates(40, 20)); // size in terms of GUI real-estate
-GUIBoard::GUIBoard(string n, GUI* g, Coordinates c) : name (n), gui(g), origin (c) {}
 
-void GUIBoard::drawHorizontalLine(Coordinates coord, const unsigned int len, char c) {
-  int i;
-  for(unsigned int i = 0; i < len; i++) {
-    gui->putc(c, coord + Coordinates(i, 0));
-  }
-}
-
-void GUIBoard::drawVerticalLine(Coordinates coord, const unsigned int len, char c) {
-  for(unsigned int i = 0; i < len; i++) {
-    gui->putc(c, coord + Coordinates(0, i));
-  }
-}
+GUIBoard::GUIBoard(string n, GUI* g, Coordinates o) : GUIPanel(n, g, o, Coordinates(40, 20)) {}
 
 void GUIBoard::drawGrid() {
   int numCols = Board::getSize().getx() - 1;
@@ -34,29 +22,11 @@ void GUIBoard::drawGrid() {
   }
 }
 
-void GUIBoard::drawBorders() {
-  int width = size.getx();
-  int height = size.gety();
-  drawHorizontalLine(origin + Coordinates(-1, 0), width, '=');
-  drawHorizontalLine(origin + Coordinates(-1, size.gety()), width, '=');
-  drawVerticalLine(origin + Coordinates(-1, 0), height + 1, '+');
-  drawVerticalLine(origin + Coordinates(size.getx() - 1, 0), height + 1, '+');
-}
-
 Coordinates GUIBoard::boardToGUI(Coordinates c) {
   return Coordinates(
     4 * (c.getx()) + origin.getx() + 1,
     2 * (c.gety()) + origin.gety() + 1
   );
-}
-
-Coordinates GUIBoard::getCursorCoordinates() {
-  return cursorCoordinates;
-}
-
-void GUIBoard::putc(char c, Coordinates coord) {
-  Coordinates guiCoord = boardToGUI(coord);
-  gui->putc(c, guiCoord); 
 }
 
 void GUIBoard::drawVessel(Vessel* v) {
@@ -125,18 +95,6 @@ void GUIBoard::eraseVessel(Vessel* v) {
   }
 }
 
-void GUIBoard::putCursor(Coordinates c) {
-  gui->putCursor(boardToGUI(c));
-  cursorCoordinates = c;
-}
-
-void GUIBoard::showCursor(bool c) {
-  if(!(boardToGUI(cursorCoordinates) == gui->getCursorCoordinates())) {
-    gui->putCursor(boardToGUI(cursorCoordinates));
-  }
-  gui->showCursor(c);
-}
-
 void GUIBoard::moveCursor(Position::Orientation dir) {
   switch(dir) {
   case Position::TONORTH:
@@ -168,8 +126,6 @@ void GUIBoard::moveCursor(Position::Orientation dir) {
 }
 
 void GUIBoard::draw() {
-  gui->printMessage(name, origin + Coordinates(0, - 1));
-  drawBorders();
+  GUIPanel::draw();
   drawGrid();
-  refresh();
 }

@@ -23,16 +23,17 @@ private:
   void printInstructions(vector<string>, Coordinates);
   void printPlacementInstructions();
   void printAttackInstructions();
-  void printInstructions();
 
 public:
   ~GUI();
   static GUI* getInstance();
   Keyboard* getKeyboard();
+  void clear();
   void draw();
   void putc(char, Coordinates);
   void printMessage(string, Coordinates);
   void putCursor(Coordinates);
+  void printInstructions();
   void logEvent(string);
   Coordinates getCursorCoordinates();
   void showCursor(bool);

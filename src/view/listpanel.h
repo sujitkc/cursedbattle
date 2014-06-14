@@ -11,11 +11,12 @@ private:
 public:
   ListPanel(string, GUI*, Coordinates, vector<string>);
   void draw();
+  unsigned int getSelectedIndex();
   void selectNextIndex();
   void selectPreviousIndex();
 private:
   virtual Coordinates boardToGUI(Coordinates);
-  void highlightIndex(const unsigned int, const bool);
+  void writeItemAtIndex(const unsigned int, const bool);
 
   static Coordinates computeSize(vector<string>);
 };

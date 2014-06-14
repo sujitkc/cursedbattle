@@ -3,6 +3,7 @@
 #include <unistd.h>                  /*  for sleep()  */
 #include <curses.h>
 #include <string>
+#include <iostream>
 
 #include "gui.h"
 
@@ -65,6 +66,7 @@ GUI* GUI::getInstance() {
 }
 
 GUI::~GUI() {
+  delete keyboard;
   delwin(window);
   endwin();
   refresh();
@@ -81,6 +83,7 @@ void GUI::putc(char c, Coordinates coord) {
 
 void GUI::printMessage(string m, Coordinates c) {
   mvaddstr(c.gety(), c.getx(), m.c_str());
+  wrefresh(window);
 }
 
 void GUI::putCursor(Coordinates c) {
@@ -114,9 +117,12 @@ void GUI::logEvent(string m) {
 
 vector<string> GUI::getAllLogMessage() { return logMessages; }
 
+void GUI::clear() {
+  werase(window);
+}
+
 void GUI::shutdown() {
   delwin(window);
   endwin();
   refresh();
-
 }

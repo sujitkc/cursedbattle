@@ -1,10 +1,17 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "board.h"
 #include "guiboard.h"
 #include "user.h"
 
 class Game {
+public:
+  enum Level {
+    BASIC,
+    ADVANCED
+  };
+
 private:
   User* player;
   User* cpu;
@@ -17,7 +24,7 @@ private:
 
 private:
   void saveLog();
-
+  static Level selectLevel();
 public:
   Game();
   ~Game();

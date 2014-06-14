@@ -1,62 +1,31 @@
-#ifndef USER_H
-#define USER_H
+#ifndef SMARTCPU_H
+#define SMARTCPU_H
 
 #include <string>
+#include <vector>
 
+#include "cpu.h"
 #include "position.h"
-#include "vessel.h"
-#include "board.h"
-#include "guiboard.h"
-#include "gui.h"
+#include "segment.h"
 
 using namespace std;
-
-class User {
-protected: // attributes
-  const string name;
-
-  Board* myBoard;
-  Board* enemyBoard;
-
-  GUIBoard* guiBoard;
-  GUIBoard* enemyGUIBoard;
-
-  Vessel* aircraftCarrier;
-  Vessel* destroyer;
-  Vessel* cruiser;
-  Vessel* submarine;
-  Vessel* patrol;
-
-protected: // methods
-  virtual void placeVessel(Vessel *);
-  virtual Position getPlacementPosition(Vessel *) = 0;
-  
+class SmartCPU : public CPU {
+private:
+  vector<Position> startingPositions;
 public: // methods
-  User(const string, Board *, GUIBoard*, Board*, GUIBoard*);
-  ~User();
-  string getName();
-  virtual Coordinates getAttackCoordinates() = 0;
-  void placeAllVessels();
-  AttackResult takeTurn();
-};
-
-class CPU : public User {
-private: // attributes
-  vector<Coordinates> attackedCoordinates;
-private: // methods
-  Position getPlacementPosition(Vessel *);
-  
-public: // methods
-  CPU(Board*, GUIBoard*, Board*, GUIBoard*);
+  SmartCPU(Board*, GUIBoard*, Board*, GUIBoard*);
   virtual Coordinates getAttackCoordinates();
-};
 
-class Player : public User {
-private: // methods
-  Position getPlacementPosition(Vessel *);
-
-public: // methods
-  Player(Board*, GUIBoard*, Board*, GUIBoard*);
-  virtual Coordinates getAttackCoordinates();
+private:
+  Segment getLongestExtensibleSegment(vector<Segment>);
+  vector<Segment> getHitSegments();
+  bool canBeAttacked(Coordinates);
+  bool isExtensible(Segment);
+  vector<Segment> filterExtensibleSegments(vector<Segment>);
+  bool isHitNotSunk(Coordinates);
+  bool isLastPosition(Position);
+  Position getNextPosition(Position);
+  void cellNotHit(vector<Segment>&, Position);
+  void cellHit(vector<Segment>&, Position);
 };
 #endif
