@@ -102,7 +102,7 @@ void Game::run() {
     catch(ActionNotAllowedException e) {
     }
   }
-  (GUI::getInstance())->clear();
+//  (GUI::getInstance())->clear();
   (GUI::getInstance())->logEvent("Game over: " + winner + " wins! Press a key to continue.");
   int inp = (GUI::getInstance())->getKeyboard()->getKey();
   GUI::getInstance()->showCursor(true);

@@ -106,6 +106,7 @@ bool SmartCPU::canBeAttacked(Coordinates c) {
 bool SmartCPU::isExtensible(Segment s) {
     if(canBeAttacked(s.getPreviousCell())) return true;
     if(canBeAttacked(s.getNextCell()))     return true;
+    return false;
 }
 
 // Out of the list of hit and not sunk segments, filter out those which are
